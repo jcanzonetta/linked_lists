@@ -138,49 +138,48 @@ class LinkedList
   # inserts the node with the provided value at the given index
   def insert_at(value, index)
     if @head.nil?
-        return "empty list"
-    elsif index > self.size-1
-        return "out of bounds"
+      return 'empty list'
+    elsif index > size - 1
+      return 'out of bounds'
     elsif index == 0
-        return "use #prepend(value) instead"
-    elsif index == self.size-1
-        return "use #append(value) instead"
+      return 'use #prepend(value) instead'
+    elsif index == size - 1
+      return 'use #append(value) instead'
     end
 
     node = @head
     i = 0
     until i == index - 1
-        node = node.next_node
-        i += 1
+      node = node.next_node
+      i += 1
     end
 
     shifted_node = node.next_node
     node.next_node = Node.new(value, shifted_node)
-
   end
 
   # that removes the node at the given index.
   def remove_at(index)
     if @head.nil?
-        return "empty list"
-    elsif index > self.size-1 || index < 0
-        return "out of bounds"
+      return 'empty list'
+    elsif index > size - 1 || index < 0
+      return 'out of bounds'
     elsif index == 0
-        node = @head.next
-        @head = node
-        return nil
-    elsif index == self.size-1
-        return "try #pop() instead"
+      node = @head.next
+      @head = node
+      return nil
+    elsif index == size - 1
+      return 'try #pop() instead'
     end
 
     node = @head
     i = 0
 
     until i == index - 1
-        node = node.next_node
-        i += 1
+      node = node.next_node
+      i += 1
     end
-    
+
     node.next_node = node.next_node.next_node
   end
 end
